@@ -2,8 +2,8 @@
 
 **Azure hierarchy (start to think what this should look like)**
 1.  Management Group
-    a.  Subscriptions
-        i.  Resource Groups
+    1.  Subscriptions
+        1.  Resource Groups
             1.  Resource
 
 **Tenant vs. Subscription**
@@ -27,7 +27,7 @@
 -   **[Azure Sentinel]{.underline}**
     -   Azure Sentinel is a **Security Information and Event Management (SIEM)** solution for security monitoring, threat detection, and incident response capabilities.
     -   Integration with Azure Monitor:
-        -   Sentinel and Azure Monitor share the same agents and workspace capabilities.Sentinel uses the same Azure Monitor Logs workspace for storing its monitoring data. Sentinel increases the price of the entire workspace, unlike Azure Monitor, which is largely free.
+        -   Sentinel and Azure Monitor share the same agents and workspace capabilities.Sentinel uses the same Azure Monitor Logs workspace for storing its monitoring dat1. Sentinel increases the price of the entire workspace, unlike Azure Monitor, which is largely free.
 
 **Pricing Calcuator vs. TCO Calculator vs. Cost Management and Billing**
 -   **[Pricing Calculator]{.underline}**
@@ -65,55 +65,55 @@
 1.  Intro
     1.  [**What is an Azure landing zone? - Cloud Adoption Framework \| Microsoft Learn**](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/)
         1.  A landing zone is a well-architected, multi-account environment that is scalable and secure.
-        i. The purpose of an Azure landing zone is to ensure the required "plumbing" is already in place, providing greater agility and compliance with security and governance requirements when applications and workloads are deployed on Azure.
-        i. [**Cloud operating models**](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/operating-model/compare)
+        1. The purpose of an Azure landing zone is to ensure the required "plumbing" is already in place, providing greater agility and compliance with security and governance requirements when applications and workloads are deployed on Azure.
+        1. [**Cloud operating models**](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/operating-model/compare)
              1.  Operating model comparison
              1.  Decentralized operations
              1.  Centralized operations
              1.  Enterprise operations (most similar to our use case)
-        i. [**Azure identity and access for LZs**](https://learn.microsoft.com/en-us/azure/architecture/landing-zones/landing-zone-deploy): recommends five role definitions (Roles)
+        1. [**Azure identity and access for LZs**](https://learn.microsoft.com/en-us/azure/architecture/landing-zones/landing-zone-deploy): recommends five role definitions (Roles)
             1.  Azure platform owner
             1.  Network management
             1.  Security operations
             1.  Subscription owner
             1.  Application owners (DevOps, AppOps)
-        i.  **Types of landing zones**
+        1.  **Types of landing zones**
             1.  [Platform LZ]{.underline}: provides centralized services used by workloads
             1.  [Application LZ]{.underline}: environments deployed for the workloads themselves
-        i. **Landing zone implementation**
+        1. **Landing zone implementation**
             1.  [**2 approaches**](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/implementation-options)
-                a.  [Start with ALZ accelerator]{.underline}: Get quickly set up with fully integrated governance, security, and operations from the start
-                a.  [Customize]{.underline}: Build up environment with specific needs
-    a.  [[Landing zone implementation options - Cloud Adoption Framework\| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/implementation-options)
-    a.  [[Cloud Adoption Framework enterprise-scale landing zones in Azure - Cloud Adoption Framework \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/enterprise-scale/implementation)
-    a.  [[Enterprise-Scale for Azure landing zones - Microsoft Community Hub]{.underline}](https://techcommunity.microsoft.com/t5/azure-architecture-blog/enterprise-scale-for-azure-landing-zones/ba-p/1576575)
-    a.  [[When to use Enterprise-Scale? - Microsoft Community Hub]{.underline}](https://techcommunity.microsoft.com/t5/azure-architecture-blog/when-to-use-enterprise-scale/ba-p/1595710)
+                1. [Start with ALZ accelerator]{.underline}: Get quickly set up with fully integrated governance, security, and operations from the start
+                1. [Customize]{.underline}: Build up environment with specific needs
+    1. [[Landing zone implementation options - Cloud Adoption Framework\| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/implementation-options)
+    1. [[Cloud Adoption Framework enterprise-scale landing zones in Azure - Cloud Adoption Framework \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/enterprise-scale/implementation)
+    1. [[Enterprise-Scale for Azure landing zones - Microsoft Community Hub]{.underline}](https://techcommunity.microsoft.com/t5/azure-architecture-blog/enterprise-scale-for-azure-landing-zones/ba-p/1576575)
+    1. [[When to use Enterprise-Scale? - Microsoft Community Hub]{.underline}](https://techcommunity.microsoft.com/t5/azure-architecture-blog/when-to-use-enterprise-scale/ba-p/1595710)
 
 1.  Deploying ALZ
-    a.  [[Deploying ALZ · Azure/Enterprise-Scale Wiki ·GitHub]{.underline}](https://github.com/Azure/Enterprise-Scale/wiki/Deploying-ALZ)
-    a.  [[GitHub - Azure/review-checklists: This repo contains code and examples to operationalize Azure review checklists.]{.underline}](https://github.com/Azure/review-checklists)
+    1.  [[Deploying ALZ · Azure/Enterprise-Scale Wiki ·GitHub]{.underline}](https://github.com/Azure/Enterprise-Scale/wiki/Deploying-ALZ)
+    1.  [[GitHub - Azure/review-checklists: This repo contains code and examples to operationalize Azure review checklists.]{.underline}](https://github.com/Azure/review-checklists)
 
 1.  Networking
-    a.  [[Hub-spoke network topology in Azure - Azure Architecture Center \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/architecture/networking/architecture/hub-spoke?tabs=cli)
+    1.  [[Hub-spoke network topology in Azure - Azure Architecture Center \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/architecture/networking/architecture/hub-spoke?tabs=cli)
 
 **Some links from Fast Track sessions**
 
 1.  Containers: Management Groups, Subscriptions, Resource Groups:
-    a.  [[Azure enterprise scaffold - Cloud Adoption Framework \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/resources/migration-with-enterprise-scaffold#azure-management-groups)
-    a.  [[Azure enterprise scaffold - Cloud Adoption Framework \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/resources/migration-with-enterprise-scaffold#azure-management-groups)
-    a.  [[Azure Resource Manager overview - Azure Resource Manager \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview#resource-groups)
+    1.  [[Azure enterprise scaffold - Cloud Adoption Framework \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/resources/migration-with-enterprise-scaffold#azure-management-groups)
+    1.  [[Azure enterprise scaffold - Cloud Adoption Framework \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/resources/migration-with-enterprise-scaffold#azure-management-groups)
+    1.  [[Azure Resource Manager overview - Azure Resource Manager \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview#resource-groups)
 1.  Role-based Access Control (RBAC)
-    a.  [[Recommended Azure role-based access control - Cloud Adoption Framework \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/considerations/roles)
+    1.  [[Recommended Azure role-based access control - Cloud Adoption Framework \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/considerations/roles)
 1.  Naming Standards
-    a.  [[Organize your Azure resources effectively - Cloud Adoption Framework \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-setup-guide/organize-resources?tabs=NamingStandards)
+    1.  [[Organize your Azure resources effectively - Cloud Adoption Framework \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-setup-guide/organize-resources?tabs=NamingStandards)
 1.  Resource tagging
-    a.  [[Develop your naming and tagging strategy for Azure resources - Cloud Adoption Framework \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)
+    1.  [[Develop your naming and tagging strategy for Azure resources - Cloud Adoption Framework \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)
 1.  Azure Policy
-    a.  [[Resource naming and tagging decision guide - Cloud Adoption Framework \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming-and-tagging-decision-guide)
-    a.  Precedence order, effects: [[Understand how effects work - Azure Policy \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects)
-    a.  Effects: [[Understand how effects work - Azure Policy \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects)
-    a.  Resource locks: [[Protect your Azure resources with a lock - Azure Resource Manager \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources?tabs=json)
+    1.  [[Resource naming and tagging decision guide - Cloud Adoption Framework \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming-and-tagging-decision-guide)
+    1.  Precedence order, effects: [[Understand how effects work - Azure Policy \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects)
+    1.  Effects: [[Understand how effects work - Azure Policy \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects)
+    1.  Resource locks: [[Protect your Azure resources with a lock - Azure Resource Manager \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources?tabs=json)
 1.  Cost Management
-    a.  [[Optimize your cloud investment with Cost Management - Microsoft Cost Management \| Microsoft Learn](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/cost-mgt-best-practices)[Quickstart - Start using Cost analysis - Microsoft Cost Management \|Microsoft Learn](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/quick-acm-cost-analysis)]{.underline}
+    1.  [[Optimize your cloud investment with Cost Management - Microsoft Cost Management \| Microsoft Learn](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/cost-mgt-best-practices)[Quickstart - Start using Cost analysis - Microsoft Cost Management \|Microsoft Learn](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/quick-acm-cost-analysis)]{.underline}
 1.  Azure Blueprints
-    a.  [[Overview of Azure Blueprints - Azure Blueprints \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/governance/blueprints/overview)
+    1.  [[Overview of Azure Blueprints - Azure Blueprints \| Microsoft Learn]{.underline}](https://learn.microsoft.com/en-us/azure/governance/blueprints/overview)
