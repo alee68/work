@@ -63,8 +63,8 @@
 
 **Introductory links from Fast Track**
 1.  Intro
-    a.  [**What is an Azure landing zone? - Cloud Adoption Framework \| Microsoft Learn**](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/)
-        i.  A landing zone is a well-architected, multi-account environment that is scalable and secure.
+    1.  [**What is an Azure landing zone? - Cloud Adoption Framework \| Microsoft Learn**](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/)
+        1.  A landing zone is a well-architected, multi-account environment that is scalable and secure.
         i. The purpose of an Azure landing zone is to ensure the required "plumbing" is already in place, providing greater agility and compliance with security and governance requirements when applications and workloads are deployed on Azure.
         i. [**Cloud operating models**](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/operating-model/compare)
              1.  Operating model comparison
