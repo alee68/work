@@ -17,25 +17,25 @@
     - Azure Advisor provides personalized recommendations to optimize Azure resources for performance, security, reliability,
         and cost-effectiveness.
     - *Use Azure Advisor when you want to fine-tune your Azure resources based on best practices and cost efficiency.*
-
 - **[Azure Monitor]**
     - Azure Monitor is an operational monitoring solution.
     - Integration:
         - Both Azure Sentinel and Defender for Cloud (formerly Azure Security Center) use the same agents and Azure Monitor Logs workspace for storing monitoring data.
     - Azure Monitor is largely a free service, but certain categories of alert rules and customer-managed data storage incur costs.
-
 - **[Azure Sentinel]**
     - Azure Sentinel is a **Security Information and Event Management (SIEM)** solution for security monitoring, threat detection, and incident response capabilities.
     - Integration with Azure Monitor:
         - Sentinel and Azure Monitor share the same agents and workspace capabilities.Sentinel uses the same Azure Monitor Logs workspace for storing its monitoring dat1. Sentinel increases the price of the entire workspace, unlike Azure Monitor, which is largely free.
 
+**Recovery Services Vault vs. Backup Vault**
+- **Backup Vault** focused on narrow set of resources; **Recovery Services Vault**: broad focus
+- (expand on this later)
+
 **Pricing Calcuator vs. TCO Calculator vs. Cost Management and Billing**
 - **[Pricing Calculator]**
     - The Azure Pricing Calculator **helps you estimate costs for your Azure usage**. It allows you to turn anticipated usage into an estimated cost, making it easier to plan and budget.
-
 - **[TCO (Total Cost of Ownership) Calculator]**
     - The TCO Calculator compares costs between an on-premises configuration and an Azure setup. It considers both direct and indirect costs.
-
 - **[Cost Management and Billing]**
     - Cost Management provides tools and insights to **manage and optimize your Azure spending**.
 
