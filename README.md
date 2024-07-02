@@ -31,7 +31,7 @@
 - **Backup Vault** focused on narrow set of resources; **Recovery Services Vault**: broad focus
 - (expand on this later)
 
-**Pricing Calcuator vs. TCO Calculator vs. Cost Management and Billing**
+**Pricing Calculator vs. TCO Calculator vs. Cost Management and Billing**
 - **[Pricing Calculator]**
     - The Azure Pricing Calculator **helps you estimate costs for your Azure usage**. It allows you to turn anticipated usage into an estimated cost, making it easier to plan and budget.
 - **[TCO (Total Cost of Ownership) Calculator]**
