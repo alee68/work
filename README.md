@@ -28,8 +28,11 @@
         - Sentinel and Azure Monitor share the same agents and workspace capabilities.Sentinel uses the same Azure Monitor Logs workspace for storing its monitoring dat1. Sentinel increases the price of the entire workspace, unlike Azure Monitor, which is largely free.
 
 **Recovery Services Vault vs. Backup Vault**
-- **Backup Vault** focused on narrow set of resources; **Recovery Services Vault**: broad focus
-- (expand on this later)
+- **Backup Vault** focused on narrow set of resources
+    - Can only be used for Azure Backup data
+- **Recovery Services Vault**: broad focus
+    - Can be used for Azure Backup and Azure Site Recovery data
+![image](https://github.com/alee68/azure-notes/assets/9437481/e98ed53e-d5d7-414c-ae05-d84c3af1d9c1)
 
 **Pricing Calculator vs. TCO Calculator vs. Cost Management and Billing**
 - **[Pricing Calculator]**
