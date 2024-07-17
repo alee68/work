@@ -9,8 +9,15 @@
 **Tenant vs. Subscription**
 - A **Tenant** is associated with a single identity (person, company, or organization) and can own one or several subscriptions
 - A **Subscription** is linked to a payment setup and each subscription will result in a separate bill
-- In every Subscription, you can add virtual resources (VM, storage,
-    network, \...)
+- In every Subscription, you can add virtual resources (VM, storage, network, ...)
+
+**AU (Administrative Unit) vs. Group**
+- **Administrative Units** are used to delegate administrative permissions over subsets of users and other resources within an Azure AD tenant.
+- **Entra ID Groups** are used to manage user access to resources and applications. They are a fundamental building block for managing user and device permissions and access control.
+    - Types of Groups: There are two types of groups in Entra ID:
+        - **Security Groups**: Used to manage member and computer access to shared resources.
+        - **Microsoft 365 Groups**: Used for collaboration between users, both inside and outside an organization, giving them access to shared resources like email, files, and SharePoint.
+
 
 **Azure Advisor vs. Azure Monitor vs. Azure Sentinel**
 - **[Azure Advisor]**
@@ -27,8 +34,8 @@
     - Integration with Azure Monitor:
         - Sentinel and Azure Monitor share the same agents and workspace capabilities.Sentinel uses the same Azure Monitor Logs workspace for storing its monitoring dat1. Sentinel increases the price of the entire workspace, unlike Azure Monitor, which is largely free.
 
-**Recovery Services Vault vs. Backup Vault**
-- **Backup Vault** focused on narrow set of resources
+**Backup Vault vs. Recovery Services Vault**
+- **Backup Vault**: focused on narrow set of resources
     - Can only be used for Azure Backup data
 - **Recovery Services Vault**: broad focus
     - Can be used for Azure Backup and Azure Site Recovery data
@@ -59,6 +66,18 @@
 
 - **[Template Specs (ARM Template Specs)]**
     - Template Specs is a new resource type for *storing* ARM templates in a resource group.  The purpose of doing that is to allow more efficient sharing, deployment, and control of the Templates shared within an organization.Use when you want to share and control ARM templates across teams while ensuring security and version management.
+
+### Unsorted notes
+azure
+designing a network
+1) determine IP cidr
+1) subnetting requirements (pg 219)
+1) connectivity needs
+
+## Difference between Service Principal and Managed Identities in Azure
+- Internally, managed identities are service principals of a special type, which are locked to only be used with Azure resources. When the managed identity is deleted, the corresponding service principal is automatically removed. Also, when a User-Assigned or System-Assigned Identity is created, the Managed Identity Resource Provider (MSRP) issues a certificate internally to that identity.
+- So what’s the difference?
+- Put simply, the difference between a managed identity and a service principal is that a managed identity manages the creation and automatic renewal of a service principal on your behalf.
 
 **Important**
 1. [[AWS to Azure services comparison - Azure Architecture Center \| Microsoft Learn]](https://learn.microsoft.com/en-us/azure/architecture/aws-professional/services)
@@ -121,3 +140,6 @@
     1. [[Optimize your cloud investment with Cost Management - Microsoft Cost Management \| Microsoft Learn](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/cost-mgt-best-practices)[Quickstart - Start using Cost analysis - Microsoft Cost Management \|Microsoft Learn](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/quick-acm-cost-analysis)]
 1. Azure Blueprints
     1. [[Overview of Azure Blueprints - Azure Blueprints \| Microsoft Learn]](https://learn.microsoft.com/en-us/azure/governance/blueprints/overview)
+
+## Next
+- [Exam AZ-305: Designing Microsoft Azure Infrastructure Solutions](https://learn.microsoft.com/en-us/credentials/certifications/exams/az-305/)
