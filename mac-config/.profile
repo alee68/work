@@ -6,6 +6,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Setting PATH for Python 3 installed by brew
 export PATH=/usr/local/share/python:$PATH
 alias python="python3"
+alias tf="terraform"
 
 # Configuration for pyenv
 export PYENV_ROOT="$HOME/.pyenv"
