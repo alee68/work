@@ -24,6 +24,7 @@ brew install --cask spotify
 brew install awscli
 brew install python
 brew install pyenv
-/opt/homebrew/bin/pip3 install boto3 --break-system-packages
+brew install tfenv
+echo "Install boto3 by best practice way (in virtual env) or: /opt/homebrew/bin/pip3 install boto3 --break-system-packages"
 
 # Copy ~/.zprofile, related files
