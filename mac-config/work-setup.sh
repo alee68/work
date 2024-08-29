@@ -21,6 +21,7 @@ brew install --cask google-chrome
 brew install --cask visual-studio-code
 brew install --cask slack
 brew install --cask spotify
+brew install --cask displaylink
 brew install awscli
 brew install python
 brew install pyenv
