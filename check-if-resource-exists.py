@@ -18,15 +18,14 @@ def resource_exists(resource):
     try:
         if service == 's3' and resource_type == 'bucket':
             s3 = boto3.client('s3')
-            # head_bucket will succeed if the bucket exists (and you have permission)
             s3.head_bucket(Bucket=resource_id)
         
         elif service == 'ec2':
             ec2 = boto3.client('ec2')
             if resource_type == 'instance':
                 response = ec2.describe_instances(InstanceIds=[resource_id])
-                # Check if Reservations/Instances are present
-                if not response.get('Reservations') or not response['Reservations'][0].get('Instances'):
+                reservations = response.get('Reservations', [])
+                if not reservations or not reservations[0].get('Instances'):
                     return False
             elif resource_type == 'volume':
                 response = ec2.describe_volumes(VolumeIds=[resource_id])
@@ -36,10 +35,13 @@ def resource_exists(resource):
         elif service == 'rds':
             rds = boto3.client('rds')
             if resource_type == 'instance':
-                # If the DB instance doesn't exist, this will raise an exception.
                 rds.describe_db_instances(DBInstanceIdentifier=resource_id)
             elif resource_type == 'cluster':
                 rds.describe_db_clusters(DBClusterIdentifier=resource_id)
+        
+        elif service == 'cloudformation' and resource_type == 'stack':
+            cf = boto3.client('cloudformation')
+            cf.describe_stacks(StackName=resource_id)
         
         else:
             print(f"Unsupported resource type: service={service}, type={resource_type}")
@@ -56,7 +58,8 @@ def resource_exists(resource):
             'ec2_instance': ['InvalidInstanceID.NotFound'],
             'ec2_volume': ['InvalidVolume.NotFound'],
             'rds_instance': ['DBInstanceNotFound'],
-            'rds_cluster': ['DBClusterNotFound']
+            'rds_cluster': ['DBClusterNotFound'],
+            'cloudformation_stack': ['ValidationError']  # Common error code when stack doesn't exist
         }
         
         if service == 's3' and error_code in not_found_codes['s3']:
@@ -71,6 +74,9 @@ def resource_exists(resource):
                 return False
             elif resource_type == 'cluster' and error_code in not_found_codes['rds_cluster']:
                 return False
+        elif service == 'cloudformation' and resource_type == 'stack':
+            if error_code in not_found_codes['cloudformation_stack']:
+                return False
 
         # For any other ClientError, print the error and return False.
         print(f"Error checking {resource}: {e}")
@@ -82,7 +88,8 @@ resources = [
     {"service": "ec2", "type": "instance", "id": "i-xxxxxxxxxxxxxx"},
     {"service": "ec2", "type": "volume", "id": "vol-xxxxxxxxxxxxxx"},
     {"service": "rds", "type": "instance", "id": "my-rds-instance"},
-    {"service": "rds", "type": "cluster", "id": "my-rds-cluster"}
+    {"service": "rds", "type": "cluster", "id": "my-rds-cluster"},
+    {"service": "cloudformation", "type": "stack", "id": "my-cf-stack"}
 ]
 
 for res in resources:
