@@ -1,0 +1,160 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  Template that creates:
+    - 3 EC2 instances (t3.micro, using a specified AMI)
+    - 3 EBS volumes (8 GiB, in us-east-1a)
+    - 3 S3 buckets (named test-bucket-01, test-bucket-02, test-bucket-03)
+    - 2 RDS instances (MySQL, db.t3.micro, identifiers with incrementing numbers)
+    - 2 RDS clusters (Aurora MySQL, db.t3.medium cluster instances, identifiers with incrementing numbers)
+
+Parameters:
+  AmiId:
+    Type: String
+    Default: ami-0c94855ba95c71c99  # Amazon Linux 2 AMI in us-east-1; change as needed
+    Description: The AMI ID for the EC2 instances.
+  DBUsername:
+    Type: String
+    Default: admin
+    Description: The database master username.
+  DBPassword:
+    Type: String
+    NoEcho: true
+    Default: password123
+    Description: The database master user password.
+  DBSubnetIds:
+    Type: List<AWS::EC2::Subnet::Id>
+    Description: The subnets for the RDS clusters.
+
+Resources:
+  ## EC2 Instances
+  EC2Instance1:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t3.micro
+      ImageId: !Ref AmiId
+
+  EC2Instance2:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t3.micro
+      ImageId: !Ref AmiId
+
+  EC2Instance3:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t3.micro
+      ImageId: !Ref AmiId
+
+  ## EBS Volumes (8 GiB each in us-east-1a; adjust AvailabilityZone as needed)
+  EBSVolume1:
+    Type: AWS::EC2::Volume
+    Properties:
+      Size: 8
+      AvailabilityZone: us-east-1a
+
+  EBSVolume2:
+    Type: AWS::EC2::Volume
+    Properties:
+      Size: 8
+      AvailabilityZone: us-east-1a
+
+  EBSVolume3:
+    Type: AWS::EC2::Volume
+    Properties:
+      Size: 8
+      AvailabilityZone: us-east-1a
+
+  ## S3 Buckets
+  S3Bucket1:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: test-bucket-01
+
+  S3Bucket2:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: test-bucket-02
+
+  S3Bucket3:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: test-bucket-03
+
+  ## RDS DB Instances (stand-alone)
+  RDSInstance1:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBInstanceIdentifier: test-rds-instance-01
+      Engine: mysql
+      DBInstanceClass: db.t3.micro
+      MasterUsername: !Ref DBUsername
+      MasterUserPassword: !Ref DBPassword
+      AllocatedStorage: 20
+      PubliclyAccessible: false
+
+  RDSInstance2:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBInstanceIdentifier: test-rds-instance-02
+      Engine: mysql
+      DBInstanceClass: db.t3.micro
+      MasterUsername: !Ref DBUsername
+      MasterUserPassword: !Ref DBPassword
+      AllocatedStorage: 20
+      PubliclyAccessible: false
+
+  ## RDS DB Subnet Group for clusters
+  RDSDBSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: "Subnet group for RDS clusters"
+      SubnetIds: !Ref DBSubnetIds
+
+  ## RDS Clusters (Aurora MySQL) and their corresponding cluster instances
+  RDSCluster1:
+    Type: AWS::RDS::DBCluster
+    Properties:
+      DBClusterIdentifier: test-rds-cluster-01
+      Engine: aurora-mysql
+      MasterUsername: !Ref DBUsername
+      MasterUserPassword: !Ref DBPassword
+      DBSubnetGroupName: !Ref RDSDBSubnetGroup
+      EngineMode: provisioned
+
+  RDSClusterInstance1:
+    Type: AWS::RDS::DBClusterInstance
+    Properties:
+      DBClusterIdentifier: !Ref RDSCluster1
+      DBInstanceClass: db.t3.medium
+      Engine: aurora-mysql
+
+  RDSCluster2:
+    Type: AWS::RDS::DBCluster
+    Properties:
+      DBClusterIdentifier: test-rds-cluster-02
+      Engine: aurora-mysql
+      MasterUsername: !Ref DBUsername
+      MasterUserPassword: !Ref DBPassword
+      DBSubnetGroupName: !Ref RDSDBSubnetGroup
+      EngineMode: provisioned
+
+  RDSClusterInstance2:
+    Type: AWS::RDS::DBClusterInstance
+    Properties:
+      DBClusterIdentifier: !Ref RDSCluster2
+      DBInstanceClass: db.t3.medium
+      Engine: aurora-mysql
+
+Outputs:
+  EC2InstanceIDs:
+    Description: "EC2 Instance IDs"
+    Value: !Join [", ", [ !Ref EC2Instance1, !Ref EC2Instance2, !Ref EC2Instance3 ]]
+  S3BucketNames:
+    Description: "S3 Bucket Names"
+    Value: !Join [", ", [ "test-bucket-01", "test-bucket-02", "test-bucket-03" ]]
+  RDSInstanceIDs:
+    Description: "RDS Instance Identifiers"
+    Value: !Join [", ", [ "test-rds-instance-01", "test-rds-instance-02" ]]
+  RDSClusterIDs:
+    Description: "RDS Cluster Identifiers"
+    Value: !Join [", ", [ "test-rds-cluster-01", "test-rds-cluster-02" ]]
