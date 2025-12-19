@@ -1,0 +1,15 @@
+---
+bases:
+  - "../bases/helmDefaults.yaml"
+  - "../bases/environments.yaml"
+
+---
+
+releases:
+{{- if (.Values | get "install.grafana" false) }}
+- name: grafana
+  namespace: {{ .Values | get "namespace" "default" }}
+  chart: ../../tpcl-grafana/grafana/
+  values:
+    - values/grafana.yaml.gotmpl
+{{- end }}

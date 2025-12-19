@@ -1,0 +1,7 @@
+environments:
+  dev:
+    values:
+      - ../envs/dev/*.yaml.gotmpl
+  test:
+    values:
+      - ../envs/test/*.yaml.gotmpl

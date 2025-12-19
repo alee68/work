@@ -1,0 +1,12 @@
+environments:
+{{ $environments := (readFile "bases/environments.yaml" | fromYaml) }}
+{{ range $key, $env := (index $environments "environments") }}
+  {{ $key }}:
+    values:
+      - "envs/{{ $key }}/*.yaml.gotmpl"
+{{- end }}
+
+helmfiles:
+  - path: applications/thirdpartychartlibrary.yaml.gotmpl
+
+missingFileHandler: Error
